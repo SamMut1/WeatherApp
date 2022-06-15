@@ -34,7 +34,7 @@ function App() {
         <div className="top">
           <div className="location">
             <p>{data.name}</p>
-            <p><Moment format="DD-MM-yyyy">{data.date}</Moment></p>
+            {data.name !==undefined && <p><Moment format="DD-MM-yyyy">{data.date}</Moment></p>}
           </div>
           <div className="temp">
             {data.main ? <h1>{data.main.temp.toFixed()}°C</h1> : null}
