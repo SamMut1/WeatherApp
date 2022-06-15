@@ -8,7 +8,6 @@ function App() {
 // & units=metric = How to change unit of mesurement
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=895284fb2d2c50a520ea537456963d9c`
 
-  const minTemp = props => <p>{data.main.daily.temp.min}</p>
 
   // set Location function
   const searchLocation = (event) => {
@@ -45,18 +44,23 @@ function App() {
           </div>
         </div>
 
-       <container className="forecast">
-       <p><Moment format="DD-MM-yyyy">{data.date}</Moment></p>
-       <p>{data.name}</p>
-       <p>{data.main.temp.toFixed()} *C</p>
+      
      
        
-        
-
-       </container>
+    
 
           {data.name !== undefined && //hides the data if no location is entered.
         <container>
+          <div className='forecast'>
+            <div className='friday'>
+            <p><Moment format="DD-MM">{data.date}</Moment></p>
+            {data.main ? <p>{data.main.temp.toFixed()}°C</p> : null}
+            {data.weather ? <p>{data.weather[0].main}</p> : null}
+            {data.current ? <p>{data.weather[0].main}</p> : null}
+
+
+            </div>
+          </div>
           <div className="bottom">
             <div className="feels">
               {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}°C</p> : null}
