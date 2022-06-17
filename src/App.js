@@ -1,12 +1,24 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import Moment from 'react-moment'
+import React, { useState } from 'react';
+import axios from 'axios';
+import Moment from 'react-moment';
+
+
+
 
 function App() {
   const [data, setData] = useState({})
   const [location, setLocation] = useState('')
 // & units=metric = How to change unit of mesurement
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=895284fb2d2c50a520ea537456963d9c`
+  
+
+   /*  https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=895284fb2d2c50a520ea537456963d9c */ 
+  /* https://api.openweathermap.org/data/3.0/onecall?q=${location}&exclude=hourly,daily&appid=895284fb2d2c50a520ea537456963d9c */
+  
+  
+
+  const image = `http://openweathermap.org/img/wn/${data.icon}@2x.png` 
+
 
 
   // set Location function
@@ -37,33 +49,56 @@ function App() {
             {data.name !==undefined && <p><Moment format="DD-MM-yyyy">{data.date}</Moment></p>}
           </div>
           <div className="temp">
-            {data.main ? <h1>{data.main.temp.toFixed()}°C</h1> : null}
+            {data.main ? <h1>{data.main.temp.toFixed()}&deg;C</h1> : null}
           </div>
           <div className="description">
             {data.weather ? <p>{data.weather[0].main}</p> : null}
           </div>
-        </div>
-
-      
-     
-       
+        </div>       
     
-
           {data.name !== undefined && //hides the data if no location is entered.
         <container>
           <div className='forecast'>
-            <div className='friday'>
-            <p><Moment format="DD-MM">{data.date}</Moment></p>
-            {data.main ? <p>{data.main.temp.toFixed()}°C</p> : null}
-            {data.weather ? <p>{data.weather[0].main}</p> : null}
-            {data.current ? <p>{data.weather[0].main}</p> : null}
-
-
-            </div>
+          <div className='friday'>
+          {data.name !==undefined && <p>18-06</p>} 
+          <img src={'http://openweathermap.org/img/wn/02d@2x.png'} alt="Icon"/>
+                <h5>Temp</h5>
+                <h5>16&deg;C</h5>
           </div>
+
+           <div className="saturday">
+               {data.name !==undefined && <p>19-06</p>} 
+                <img src={'http://openweathermap.org/img/wn/01d@2x.png'} alt="Icon"/>
+                <h5>Temp</h5>
+                <h5>19&deg;C</h5>
+             </div>
+
+             <div className="sunday">
+             {data.name !==undefined && <p>20-06</p>}
+             <img src={'http://openweathermap.org/img/wn/03d@2x.png'} alt="Icon"/>
+             <h5>Temp</h5>
+             <h5>15&deg;C</h5>
+             </div>
+
+             <div className="monday">
+             {data.name !==undefined && <p>21-06</p>}
+             <img src={'http://openweathermap.org/img/wn/09d@2x.png'} alt="Icon"/>
+             <h5>Temp</h5> 
+             <h5>8&deg;C</h5>
+             </div>
+
+             <div className="tuesday">
+             {data.name !==undefined && <p>22-06</p>}
+             <img src={'http://openweathermap.org/img/wn/02d@2x.png'} alt="Icon"/>
+             <h5>Temp</h5> 
+             <h5>17&deg;C</h5>
+             </div>
+            </div> 
+
+
           <div className="bottom">
             <div className="feels">
-              {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}°C</p> : null}
+              {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}&deg;C</p> : null}
               <p>Feels Like</p>
             </div>
             <div className="humidity">
@@ -79,11 +114,11 @@ function App() {
            <div className="bottom1">
              
              <div><p>Min Temp</p>
-              {data.main ? <p className='bold'>{data.main.temp_min.toFixed()}°C </p> : null}
+              {data.main ? <p className='bold'>{data.main.temp_min.toFixed()}&deg;C </p> : null}
               </div>
               <div className="max_temp">
               <p>Max Temp</p>
-              {data.main ? <p className='bold'>{data.main.temp_max.toFixed()} °C</p> : null}
+              {data.main ? <p className='bold'>{data.main.temp_max.toFixed()}&deg;C</p> : null}
               
                </div>
              </div>
@@ -95,20 +130,32 @@ function App() {
 }
 
 export default App;
-{/*
-
-        <div className="bottom1">
-            <div className="temp_min">
-          {data.main ? <p>{data.main.temp_min.toFixed()}°C </p> : null} 
-          <p>Min Temp</p>
-            <div className="max_temp">
-              {data.data ? <p className='bold'>{data.main.temp_max.toFixed()} °C</p> : null}
-              <p>Max Temp</p>
-            </div>
-          </div>
-        
-      </div>
-    </div>
+           {/* <p><Moment format="DD-MM">{data.date}</Moment></p>
+            {data.main ? <p>{data.main.temp.toFixed()}°C</p> : null}
+            {data.weather ? <p>{data.weather[0].main}</p> : null}
 
 
- */}
+
+            {data.name !==undefined && <p><Moment format="DD-MM">{data.date}</Moment></p>}
+                <img src={'http://openweathermap.org/img/wn/01d@2x.png'} alt="Icon"/>
+             </div>
+
+             <div className="saturday">
+               {data.name !==undefined && <p><Moment format="DD-MM">{data.date}</Moment></p>} 
+                <img src={'http://openweathermap.org/img/wn/01d@2x.png'} alt="Icon"/>
+             </div>
+
+             <div className="sunday">
+             {data.name !==undefined && <p><Moment format="DD-MM">{data.date}</Moment></p>}
+             <img src={'http://openweathermap.org/img/wn/01d@2x.png'} alt="Icon"/>
+             </div>
+
+             <div className="monday">
+             {data.name !==undefined && <p><Moment format="DD-MM">{data.date}</Moment></p>}
+             <img src={'http://openweathermap.org/img/wn/01d@2x.png'} alt="Icon"/>
+             </div>
+
+             <div className="tuesday">
+             {data.name !==undefined && <p><Moment format="DD-MM">{data.date}</Moment></p>}
+             <img src={'http://openweathermap.org/img/wn/01d@2x.png'} alt="Icon"/>
+  */}
